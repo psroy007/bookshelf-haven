@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Story Collection | Developer Options | Bookshelf Haven</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/?size=48&id=55455&format=png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .story {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+        }
+
+        .story h2 {
+            margin: 0;
+            color: #4CAF50;
+        }
+
+        .story p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        .edit-delete-buttons {
+            margin-top: 10px;
+        }
+
+        .edit-delete-buttons button {
+            margin-right: 10px;
+            padding: 5px 15px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .edit-delete-buttons button:hover {
+            background-color: #fb8c00;
+        }
+
+        footer {
+            text-align: center;
+            margin: 20px 0;
+            color: #777;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .story h2 {
+                font-size: 20px;
+            }
+
+            .story p {
+                font-size: 14px;
+            }
+
+            footer p {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 10px;
+                margin: 5px;
+            }
+
+            .story h2 {
+                font-size: 18px;
+            }
+
+            .story p {
+                font-size: 13px;
+            }
+
+            footer p {
+                font-size: 10px;
+            }
+
+            .read-more {
+                font-size: 14px;
+            }
+        }
+
+        /* Upload Form Styles */
+        .upload-form {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-form h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .upload-form label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .upload-form input[type="text"],
+        .upload-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .upload-form input[type="file"] {
+            margin: 10px 0;
+        }
+
+        .upload-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-form button:hover {
+            background-color: #45a049;
+        }
+
+        .story {
+        margin-bottom: 20px;
+        border: 2px solid #ddd;  /* Adds a border with a light color */
+        border-radius: 30px;      /* Rounded corners for a smoother look */
+        padding: 15px;           /* Adds some padding inside the border */
+        background-color: #fff;  /* Keeps the background color white */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Optional: Adds a subtle shadow around the border */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Story Collections</h1>
+        <p>Developer Options</p>
+    </header>
+    
+    <div class="new-container" id="new-story-container">
+        <!-- New Stories will be displayed here dynamically -->
+    </div>
+
+    <!-- Upload Form Section -->
+    <div class="container upload-form">
+        <h3>Upload Your Story</h3>
+        <form id="uploadForm">
+            <label for="title">Story Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter the title of your story" required>
+            <label for="description">Story Description:</label>
+            <textarea id="description" name="description" placeholder="Enter a brief description of your story" rows="4" required></textarea>
+            <label for="storyFile">Upload Story File (Text or Document):</label>
+            <input type="file" id="storyFile" name="storyFile" accept=".txt, .doc, .docx, .pdf" required>
+            <button type="submit">Upload Story</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Purab Singha Roy. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to display stories from localStorage
+        function displayStories() {
+            const storyContainer = document.getElementById('new-story-container');
+            storyContainer.innerHTML = ''; // Clear existing stories
+
+            // Get stories from localStorage
+            const stories = JSON.parse(localStorage.getItem('stories')) || [];
+
+            // Display each story
+            stories.forEach((story, index) => {
+                const storyDiv = document.createElement('div');
+                storyDiv.classList.add('story');
+                storyDiv.innerHTML = `
+                    <h2>${story.title}</h2>
+                    <p>${story.description}</p>
+                    <a href="#" class="read-more" onclick="viewStory(${index})">Read more</a>
+                    <div class="edit-delete-buttons">
+                        <button onclick="editStory(${index})">Edit</button>
+                        <button onclick="deleteStory(${index})">Delete</button>
+                    </div>
+                `;
+                storyContainer.appendChild(storyDiv);
+            });
+        }
+
+        // Handle form submission
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const storyFile = document.getElementById('storyFile').files[0];
+
+            // Read the file content as Base64
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const fileContent = e.target.result; // The Base64 string of the file
+
+                // Get existing stories or initialize an empty array
+                const stories = JSON.parse(localStorage.getItem('stories')) || [];
+
+                // Create a new story object
+                const newStory = {
+                    title: title,
+                    description: description,
+                    content: fileContent
+                };
+
+                // Add the new story to the array
+                stories.push(newStory);
+
+                // Save the updated array back to localStorage
+                localStorage.setItem('stories', JSON.stringify(stories));
+
+                // Reset the form
+                document.getElementById('uploadForm').reset();
+
+                // Refresh the story list
+                displayStories();
+            };
+            reader.readAsDataURL(storyFile); // Read the file as Base64
+        });
+
+        // Function to view the full content of a story
+        function viewStory(index) {
+            const stories = JSON.parse(localStorage.getItem('stories')) || [];
+            const story = stories[index];
+            alert('Story Content:\n' + story.content);
+            // In a real app, you would display the content in a more user-friendly way.
+        }
+
+        // Function to edit a story
+        function editStory(index) {
+            const stories = JSON.parse(localStorage.getItem('stories')) || [];
+            const story = stories[index];
+
+            // Fill the form with the current story data
+            document.getElementById('title').value = story.title;
+            document.getElementById('description').value = story.description;
+
+            // Remove the old story and update the story list with the new details
+            stories.splice(index, 1);
+            localStorage.setItem('stories', JSON.stringify(stories));
+
+            // Refresh the story list
+            displayStories();
+        }
+
+        // Function to delete a story
+        function deleteStory(index) {
+            const stories = JSON.parse(localStorage.getItem('stories')) || [];
+            stories.splice(index, 1); // Remove the story from the array
+            localStorage.setItem('stories', JSON.stringify(stories)); // Save the updated array
+
+            // Refresh the story list
+            displayStories();
+        }
+
+        // Load stories from localStorage and display them
+        window.onload = displayStories;
+    </script>
+</body>
+</html>
