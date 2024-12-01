@@ -173,7 +173,13 @@
     </header>
 
     <div class="container" id="story-container">
-        <!-- Existing Stories Will Be Displayed Here -->
+        
+
+        <div class="story">
+            <h2>Shattered Souls | PROLOGUE - The Betrayal </h2>
+            <p>Naveen was a college student like any other, dreaming of a bright future. But after a fateful night of hazing and humiliation, he found himself on the wrong side of his peers. Rejected and ridiculed.....</p>
+            <a href="prologue_betrayal.html" target="_blank" class="read-more">Read more</a>
+        </div>
 
         <div class="story">
             <h2>The Shadow Files</h2>
@@ -192,7 +198,7 @@
 
     </div>
 
-    <!-- Edit Story Form (hidden initially) -->
+    
     <div id="editForm" style="display:none;">
         <h3>Edit Story</h3>
         <label for="editTitle">Title:</label>
@@ -203,19 +209,19 @@
         <button onclick="cancelEdit()">Cancel</button>
     </div>
 
-    <!-- Upload Form Section -->
+    
     <div class="container upload-form">
         <h3>Upload Your Story</h3>
-        <form id="uploadForm">
+        <form id="/upload_story" method="POST" action="{{ url_for('upload_story') }}" enctype="multipart/form-data">
             <label for="title">Story Title:</label>
             <input type="text" id="title" name="title" placeholder="Enter the title of your story" required>
-
+        
             <label for="description">Story Description:</label>
             <textarea id="description" name="description" placeholder="Enter a brief description of your story" rows="4" required></textarea>
-
+        
             <label for="storyFile">Upload Story File (Text or Document):</label>
             <input type="file" id="storyFile" name="storyFile" accept=".txt, .doc, .docx, .pdf" required>
-
+        
             <button type="submit">Upload Story</button>
         </form>
     </div>
