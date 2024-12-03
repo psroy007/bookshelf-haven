@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookshelf Haven - Your very own story showcase</title>
+    <link rel="shortcut icon" href="https://img.icons8.com/?size=80&id=893nZujt9PD0&format=png" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .story {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .story:last-child {
+            border-bottom: none;
+        }
+
+        .story h2 {
+            margin: 0;
+            color: #4CAF50;
+        }
+
+        .story p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .read-more {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            margin: 20px 0;
+            color: #777;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .story h2 {
+                font-size: 20px;
+            }
+
+            .story p {
+                font-size: 14px;
+            }
+
+            footer p {
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 20px;
+            }
+
+            .container {
+                padding: 10px;
+                margin: 5px;
+            }
+
+            .story h2 {
+                font-size: 18px;
+            }
+
+            .story p {
+                font-size: 13px;
+            }
+
+            footer p {
+                font-size: 10px;
+            }
+
+            .read-more {
+                font-size: 14px;
+            }
+        }
+
+        /* Upload Form Styles */
+        .upload-form {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .upload-form h3 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+
+        .upload-form label {
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .upload-form input[type="text"],
+        .upload-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .upload-form input[type="file"] {
+            margin: 10px 0;
+        }
+
+        .upload-form button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .upload-form button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Featured Stories</h1>
+        <p>Explore the universe of written stories. Enjoy reading!</p>
+    </header>
+
+    <div class="container" id="story-container">
+
+        <div class="story">
+            <h2>Shattered Souls | PROLOGUE - The Betrayal </h2>
+            <p>Naveen was a college student like any other, dreaming of a bright future. But after a fateful night of hazing and humiliation, he found himself on the wrong side of his peers. Rejected and ridiculed.....</p>
+            <a href="prologue_betrayal.html" target="_blank" class="read-more">Read more</a>
+        </div>
+        
+        <div class="story">
+            <h2>Shattered Souls | Episode 1 - The Revenge Begins </h2>
+            <p>Follows Naveen as he begins his reign of terror, starting with his assault on Divya. Ends with the police <br> launching a manhunt for the "Bus Stop Butcher"......</p>
+            <a href="revenge_begins.html" target="_blank" class="read-more">Read more</a>
+        </div>
+
+        <div class="story">
+            <h2>The Shadow Files</h2>
+            <p>In a world of secrets and shadows, one woman's curiosity would lead her down a dangerous path, one that would ultimately lead to her demise. This is the story of Sara, and the mystery of the USB drive.....</p>
+            <a href="shadow_files.html" target="_blank" class="read-more">Read more</a>
+        </div>
+
+        <div class="story">
+            <h2>পল্লব ডায়েরিস | পর্ব ১ - প্লেন অ্যাকসিডেন্ট</h2>
+            <p>
+                একটি রোমাঞ্চকর যাত্রার প্রস্তুতির মাঝে, পল্লব ও তার বন্ধুদের মধ্যে নানা বিপত্তি ঘটতে থাকে, যখন ফ্লাইটের জন্য তারা দমদম এয়ারপোর্টে পৌঁছাতে দেরি করে.....
+            </p>
+            <a href="plane_accident.html" target="_blank" class="read-more">Read more</a>
+        </div>
+        
+
+    </div>
+
+    
+    <div id="editForm" style="display:none;">
+        <h3>Edit Story</h3>
+        <label for="editTitle">Title:</label>
+        <input type="text" id="editTitle" placeholder="Edit story title"><br>
+        <label for="editDescription">Description:</label>
+        <textarea id="editDescription" placeholder="Edit story description"></textarea><br>
+        <button onclick="saveEdits()">Save Edits</button>
+        <button onclick="cancelEdit()">Cancel</button>
+    </div>
+
+    
+    <div class="container upload-form">
+        <h3>Upload Your Story</h3>
+        <form id="/upload_story" method="POST" action="{{ url_for('upload_story') }}" enctype="multipart/form-data">
+            <label for="title">Story Title:</label>
+            <input type="text" id="title" name="title" placeholder="Enter the title of your story" required>
+        
+            <label for="description">Story Description:</label>
+            <textarea id="description" name="description" placeholder="Enter a brief description of your story" rows="4" required></textarea>
+        
+            <label for="storyFile">Upload Story File (Text or Document):</label>
+            <input type="file" id="storyFile" name="storyFile" accept=".txt, .doc, .docx, .pdf" required>
+        
+            <button type="submit">Upload Story</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Purab Singha Roy. All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        // Handle form submission
+        document.getElementById('uploadForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const storyFile = document.getElementById('storyFile').files[0];
+
+            // Read the file content as Base64
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const fileContent = e.target.result; // The Base64 string of the file
+
+                // Get existing stories or initialize an empty array
+                const stories = JSON.parse(localStorage.getItem('stories')) || [];
+
+                // Create a new story object
+                const newStory = {
+                    title: title,
+                    description: description,
+                    content: fileContent
+                };
+
+                // Add the new story to the array
+                stories.push(newStory);
+
+                // Save the updated array back to localStorage
+                localStorage.setItem('stories', JSON.stringify(stories));
+
+                // Reset the form
+                document.getElementById('uploadForm').reset();
+
+                // Refresh the story list
+                displayStories();
+                window.location.href = "upload_stories.html"; 
+            };
+            reader.readAsDataURL(storyFile); // Read the file as Base64
+        });
+
+        
+
+
+    </script>
+</body>
+
+</html>
